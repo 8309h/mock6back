@@ -27,7 +27,7 @@ QuizRouter.post('/quizzes', async (req, res) => {
 
 QuizRouter.put('/quizzes/:id', async (req, res) => {
     try {
-        const { title, description } = req.body.quiz;
+        const { title, description } = req.body;
         const quiz = await QuizModel.findByIdAndUpdate(req.params.id, { title, description }, { new: true });
         if (!quiz) {
             return res.status(404).json({ error: 'Quiz not found' });
